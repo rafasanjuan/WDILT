@@ -44,12 +44,8 @@ wdiltApp.controller('WdiltController', function CalendarController($scope, $cook
   
   $scope.logIn = function (username, password, signup) {
     $http({
-      method: 'POST',
-      data: { 
-        'username' : username, 
-        'password' : password,
-      },
-      url: 'http://localhost/WDILT/api/user/login.php/?username=' + username + '&password=' + password
+      method: 'GET',
+      url: 'http://localhost/WDILT/api/user/login.php?username=' + username + '&password=' + password
     }).then(function successCallback(response) {
       $scope.atoken = response.data.token;
       $cookies.put('atoken', response.data.token);
