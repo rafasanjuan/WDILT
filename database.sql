@@ -1,14 +1,18 @@
--- phpMyAdmin SQL Dump
-
-CREATE TABLE `users` (
-  `username` varchar(30) NOT NULL,
-  `password` varchar(60) NOT NULL
+-- MAIN TABLE FOR STORING THE CONTENT.
+CREATE TABLE post (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  timestamp datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  content varchar(256) NOT NULL,
+  username varchar(20) NOT NULL,
+  tags varchar(256) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `username` (`username`)
 );
 
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`),
-  ADD UNIQUE KEY `username` (`username`);
-COMMIT;
+
+-- STORES USER CREDENTIALS.
+CREATE TABLE user (
+    username VARCHAR(20) PRIMARY KEY,
+    password VARCHAR(256) NOT NULL,
+    salt VARCHAR(256) NOT NULL
+);
